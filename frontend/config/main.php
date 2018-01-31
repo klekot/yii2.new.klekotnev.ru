@@ -45,8 +45,6 @@ return [
             'rules' => [
                 '/' => 'site/index',
                 '<action:\w+>' => 'site/<action>',
-                'music' => 'music/index',
-                '<action:\w+>' => 'music/<action>',
             ],
         ],
     ],

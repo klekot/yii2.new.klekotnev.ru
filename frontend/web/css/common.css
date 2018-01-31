@@ -72,6 +72,7 @@ html {
 
 .col-lg-5.search {
     padding-right: 0px;
+    float: right;
 }
 
 .glyphicon.glyphicon-plus-sign.add-model {
@@ -123,4 +124,8 @@ div.module-menu-container {
     display: inline-block;
     float: right;
     margin-top: 12px;
+}
+
+div.module-content-container {
+    margin-top: 20px;
 }

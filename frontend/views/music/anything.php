@@ -2,6 +2,6 @@
 
 /* @var $this yii\web\View */
 
-$commonTitle = ['prehistory', 'Предыстория'];
+$commonTitle = ['anything', 'Разное'];
 
 echo $this->render('_music', ['commonTitle' => $commonTitle, 'title' => $title, 'page' => $page]);

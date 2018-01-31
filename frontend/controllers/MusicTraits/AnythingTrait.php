@@ -1,26 +1,26 @@
 <?php
 namespace frontend\controllers\MusicTraits;
 
-trait GodfathersTrait
+trait AnythingTrait
 {
-    public function actionGodfathers()
+    public function actionAnything()
     {
-        $title = 'Крёстные Отцы';
+        $title = 'Разное';
         $page = null;
         return $this->render('anything', ['page' => $page, 'title' => $title]);
     }
 
-    public function actionGodfathersMusic()
+    public function actionAnythingMusic()
     {
         $title = 'Музыка';
         $path = 'music/anything-music';
         $pageContent = PageContent::find()->where(['path' => $path])->one();
         $page = $pageContent ? $pageContent->content : '';
-
+        
         return $this->render('anything', ['page' => $page, 'title' => $title]);
     }
 
-    public function actionGodfathersPhoto()
+    public function actionAnythingPhoto()
     {
         $title = 'Фото';
         $path = 'music/anything-photo';
@@ -30,7 +30,7 @@ trait GodfathersTrait
         return $this->render('anything', ['page' => $page, 'title' => $title]);
     }
 
-    public function actionGodfathersVideo()
+    public function actionAnythingVideo()
     {
         $title = 'Видео';
         $path = 'music/anything-video';
@@ -40,7 +40,7 @@ trait GodfathersTrait
         return $this->render('anything', ['page' => $page, 'title' => $title]);
     }
 
-    public function actionGodfathersStory()
+    public function actionAnythingStory()
     {
         $title = 'История';
         $path = 'music/anything-story';
@@ -50,7 +50,7 @@ trait GodfathersTrait
         return $this->render('anything', ['page' => $page, 'title' => $title]);
     }
 
-    public function actionGodfathersPeople()
+    public function actionAnythingPeople()
     {
         $title = 'Участники';
         $path = 'music/anything-people';

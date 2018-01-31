@@ -13,11 +13,11 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/common.css',
         'css/bootstrap.min.css',
         'css/ie10-viewport-bug-workaround.css',
         'css/navbar-fixed-top.css',
-        'css/sticky-footer.css'
+        'css/sticky-footer.css',
+        'css/common.css',
     ];
     public $js = [
     ];

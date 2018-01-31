@@ -1,2 +1,0 @@
-<?php
-echo 'video ajax';

@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\bootstrap\ActiveForm;
 
 AppAsset::register($this);
 ?>
@@ -100,8 +101,8 @@ AppAsset::register($this);
                             <li><a href="/music/soloing">Сольное творчество</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Раритеры</li>
-                            <li><a href="/music/raritets/nuages-combo">Nuages Combo</a></li>
-                            <li><a href="/music/raritets/anything">Разное</a></li>
+                            <li><a href="/music/nuages-combo">Nuages Combo</a></li>
+                            <li><a href="/music/anything">Разное</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -123,22 +124,26 @@ AppAsset::register($this);
                         </ul>
                     </li>
                     <li><a href="/contact">Контакты</a></li>
-                    <li><a href="/thanks">Спасибо</a></li>
+                    <!--<li><a href="/thanks">Спасибо</a></li>-->
                 </ul>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 search">
+                            <?php $form = ActiveForm::begin([
+                                'action'  => ['/search'],
+                                'method'  => 'get',
+                                'options' => ['class' => 'form-inline'],
+                            ]);?>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Поиск по сайту ...">
+                                <input id="search" name="search" required value="" type="text" class="form-control input-md" placeholder="Поиск по сайту ...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Найти</button>
-                            </span>
+                                    <?=Html::submitButton('Найти', ['class' => 'btn btn-default'])?>
+                                </span>
                             </div><!-- /input-group -->
+                            <?php ActiveForm::end();?>
                         </div><!-- /.col-lg-5 -->
                     </div><!-- /.row -->
                 </div>
-                <ul class="nav navbar-nav navbar-right">
-                </ul>
             </div><!--/.nav-collapse -->
         </div>
     </nav>

@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers\MusicTraits;
 
+use app\models\PageContent;
+
 trait PrehistoryTrait
 {
     public function actionPrehistory()
@@ -13,35 +15,50 @@ trait PrehistoryTrait
     public function actionPrehistoryMusic()
     {
         $title = 'Музыка';
-        $page = $this->render('prehistory/music');
+        $path = 'music/prehistory-music';
+        $pageContent = PageContent::find()->where(['path' => $path])->one();
+        $page = $pageContent ? $pageContent->content : '';
+
         return $this->render('prehistory', ['page' => $page, 'title' => $title]);
     }
 
     public function actionPrehistoryPhoto()
     {
         $title = 'Фото';
-        $page = $this->render('prehistory/photo');
+        $path = 'music/prehistory-photo';
+        $pageContent = PageContent::find()->where(['path' => $path])->one();
+        $page = $pageContent ? $pageContent->content : '';
+
         return $this->render('prehistory', ['page' => $page, 'title' => $title]);
     }
 
     public function actionPrehistoryVideo()
     {
         $title = 'Видео';
-        $page = $this->render('prehistory/video');
+        $path = 'music/prehistory-video';
+        $pageContent = PageContent::find()->where(['path' => $path])->one();
+        $page = $pageContent ? $pageContent->content : '';
+
         return $this->render('prehistory', ['page' => $page, 'title' => $title]);
     }
 
     public function actionPrehistoryStory()
     {
         $title = 'История';
-        $page = $this->render('prehistory/story');
+        $path = 'music/prehistory-story';
+        $pageContent = PageContent::find()->where(['path' => $path])->one();
+        $page = $pageContent ? $pageContent->content : '';
+
         return $this->render('prehistory', ['page' => $page, 'title' => $title]);
     }
 
     public function actionPrehistoryPeople()
     {
         $title = 'Участники';
-        $page = $this->render('prehistory/people');
+        $path = 'music/prehistory-people';
+        $pageContent = PageContent::find()->where(['path' => $path])->one();
+        $page = $pageContent ? $pageContent->content : '';
+
         return $this->render('prehistory', ['page' => $page, 'title' => $title]);
     }
 }

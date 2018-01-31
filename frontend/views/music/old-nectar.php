@@ -2,6 +2,6 @@
 
 /* @var $this yii\web\View */
 
-$commonTitle = ['godfathers', 'Крёстные Отцы'];
+$commonTitle = ['old-nectar', 'Старый Нектар'];
 
 echo $this->render('_music', ['commonTitle' => $commonTitle, 'title' => $title, 'page' => $page]);

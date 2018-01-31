@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Elastic;
+use app\models\PageContent;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -12,6 +14,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use app\models\Search;
 
 /**
  * Site controller
@@ -208,6 +211,24 @@ class SiteController extends Controller
 
         return $this->render('resetPassword', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionThanks()
+    {
+        return $this->render('thanks');
+    }
+
+    public function actionSearch()
+    {
+//        Search::createIndex();
+        $elastic = new Search();
+        $query   = Yii::$app->request->queryParams;
+        $result  = $elastic->searches($query);
+        return $this->render('search', [
+            'searchModel'  => $elastic,
+            'dataProvider' => $result,
+            'query'        => $query['search'],
         ]);
     }
 }
