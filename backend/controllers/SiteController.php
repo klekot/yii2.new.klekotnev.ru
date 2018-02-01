@@ -26,7 +26,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'content-management'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -94,5 +94,10 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionContentManagement()
+    {
+        return $this->render('content-management');
     }
 }
