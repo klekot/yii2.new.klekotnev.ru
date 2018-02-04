@@ -129,3 +129,8 @@ div.module-menu-container {
 div.module-content-container {
     margin-top: 20px;
 }
+
+div.input-group {
+    width: 90%;
+    float: right;
+}

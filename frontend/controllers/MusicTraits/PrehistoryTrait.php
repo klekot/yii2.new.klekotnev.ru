@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers\MusicTraits;
 
-use app\models\PageContent;
+use common\models\PageContent;
 
 trait PrehistoryTrait
 {

@@ -136,7 +136,7 @@ AppAsset::register($this);
                             ]);?>
                             <div class="input-group">
                                 <input id="search" name="search" required value="" type="text" class="form-control input-md" placeholder="Поиск по сайту ...">
-                                <span class="input-group-btn">
+                                <span class="input-group-btn" style="margin-right: 40px;">
                                     <?=Html::submitButton('Найти', ['class' => 'btn btn-default'])?>
                                 </span>
                             </div><!-- /input-group -->

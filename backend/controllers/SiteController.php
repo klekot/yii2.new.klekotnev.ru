@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\models\PageContent;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -27,6 +28,11 @@ class SiteController extends Controller
                     ],
                     [
                         'actions' => ['logout', 'index', 'content-management'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['logout', 'index', 'save-content'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -98,6 +104,18 @@ class SiteController extends Controller
 
     public function actionContentManagement()
     {
-        return $this->render('content-management');
+        $contentId = Yii::$app->request->get('id');
+        $page = PageContent::findOne($contentId);
+
+        if (isset($_POST['PageContent'])) {
+            $page->setAttributes($_POST['PageContent']);
+
+            if ($page->save()) {
+                $this->redirect(array('content-management', 'id' => $page->id));
+            }
+        }
+        return $this->render('content-management', [
+            'page' => $page
+        ]);
     }
 }

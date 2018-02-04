@@ -2,7 +2,7 @@
 namespace frontend\controllers;
 
 use app\models\Elastic;
-use app\models\PageContent;
+use common\models\PageContent;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;

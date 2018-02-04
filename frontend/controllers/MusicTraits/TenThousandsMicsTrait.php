@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers\MusicTraits;
 
+use common\models\PageContent;
+
 trait TenThousandsMicsTrait
 {
     public function actionTenThousandsMics()
