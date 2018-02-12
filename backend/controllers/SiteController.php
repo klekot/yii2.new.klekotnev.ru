@@ -101,21 +101,4 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
-
-    public function actionContentManagement()
-    {
-        $contentId = Yii::$app->request->get('id');
-        $page = PageContent::findOne($contentId);
-
-        if (isset($_POST['PageContent'])) {
-            $page->setAttributes($_POST['PageContent']);
-
-            if ($page->save()) {
-                $this->redirect(array('content-management', 'id' => $page->id));
-            }
-        }
-        return $this->render('content-management', [
-            'page' => $page
-        ]);
-    }
 }

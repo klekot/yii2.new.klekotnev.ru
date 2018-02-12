@@ -13,7 +13,7 @@ use Yii;
  * @property string $end_date
  * @property string $creation_place
  *
- * @property Musician[] $musicians
+ * @property Person[] $musicians
  * @property Record[] $records
  */
 class Collective extends \yii\db\ActiveRecord
@@ -57,7 +57,7 @@ class Collective extends \yii\db\ActiveRecord
      */
     public function getMusicians()
     {
-        return $this->hasMany(Musician::className(), ['id' => 'musician_id'])->viaTable('collective_musician', ['collective_id' => 'id']);
+        return $this->hasMany(Person::className(), ['id' => 'musician_id'])->viaTable('collective_musician', ['collective_id' => 'id']);
     }
 
     /**

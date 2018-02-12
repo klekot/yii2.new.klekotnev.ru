@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use \borales\behaviors\elasticsearch\Behavior;
 
 /**
  * This is the model class for table "page_content".
@@ -43,6 +44,23 @@ class PageContent extends \yii\db\ActiveRecord
             'id' => 'ID',
             'path' => 'Path',
             'content' => 'Content',
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'elasticsearch' => [
+                'class' => Behavior::className(),
+                'mode' => 'command',
+                'elasticIndex' => 'klekotnev',
+                'elasticType' => 'page_content',
+                'dataMap' => [
+                    'content' => function() {
+                        return strip_tags($this->content);
+                    },
+                ]
+            ],
         ];
     }
 }

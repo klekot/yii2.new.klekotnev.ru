@@ -51,7 +51,7 @@ class m180204_130231_create_junction_table_for_collective_and_musician_tables ex
             'fk-collective_musician-musician_id',
             'collective_musician',
             'musician_id',
-            'musician',
+            'person',
             'id',
             'CASCADE'
         );

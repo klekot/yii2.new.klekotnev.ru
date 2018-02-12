@@ -14,7 +14,7 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 
-$pages = PageContent::find()->all();
+$models = \yii\helpers\Utils::commonModelsNames();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -70,19 +70,10 @@ NavBar::end();
     <?= Alert::widget() ?>
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar" id="sidenav01">
-                <li class="active"><a href="#">Действия: <span class="sr-only">(current)</span></a></li>
-                <li><a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
-                        Контент-менеджмент
-                    </a>
-                    <div class="collapse" id="toggleDemo0" style="height: 0px;">
-                        <ul class="nav nav-list">
-                            <?php foreach ($pages as $page): ?>
-                                <?php echo '<li style="margin-left: 20px;"><a href="'. Url::to(['site/content-management', 'id' => $page->id]) . '">' . $page->path . '</a></li>'; ?>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                </li>
+            <ul class="nav nav-list">
+                <?php foreach ($models as $model): ?>
+                    <?php echo '<li style="margin-left: 20px;"><a href="'. Url::to(['/' . $model]) . '/">' . $model . '</a></li>'; ?>
+                <?php endforeach; ?>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

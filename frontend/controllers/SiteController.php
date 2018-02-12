@@ -1,8 +1,9 @@
 <?php
 namespace frontend\controllers;
 
-use app\models\Elastic;
+use frontend\models\Elastic;
 use common\models\PageContent;
+use common\models\Text;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -14,7 +15,6 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use app\models\Search;
 
 /**
  * Site controller
@@ -216,19 +216,43 @@ class SiteController extends Controller
 
     public function actionThanks()
     {
-        return $this->render('thanks');
+        $texts = Text::find()->all();
+        return $this->render('thanks', ['texts' => $texts]);
     }
 
     public function actionSearch()
     {
-//        Search::createIndex();
-        $elastic = new Search();
+        $elastic = new Elastic();
         $query   = Yii::$app->request->queryParams;
+
+//        $params = [
+//            'must' => [
+//                'match_all' => [
+//                    "content" => $query
+//                ]
+//            ]
+//        ];
+//        $result = Elastic::find()->query($params)->all();
+//        echo var_dump($result);
+
+
         $result  = $elastic->searches($query);
         return $this->render('search', [
             'searchModel'  => $elastic,
             'dataProvider' => $result,
             'query'        => $query['search'],
         ]);
+    }
+
+    public function actionSearchIndex()
+    {
+        $allPagesContent = PageContent::find()->all();
+
+        foreach ($allPagesContent as $record) {
+            $elastic = new Elastic();
+            $elastic->content = $record->content;
+            $elastic->insert();
+        }
+        exit('Done');
     }
 }

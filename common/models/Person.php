@@ -10,9 +10,9 @@ use Yii;
  * @property int $id
  * @property string $lastname
  * @property string $firstname
+ * @property int $is_author
+ * @property int $is_musician
  *
- * @property Author[] $authors
- * @property Musician[] $musicians
  */
 class Person extends \yii\db\ActiveRecord
 {
@@ -32,6 +32,7 @@ class Person extends \yii\db\ActiveRecord
         return [
             [['lastname', 'firstname'], 'required'],
             [['lastname', 'firstname'], 'string', 'max' => 255],
+            [['is_author', 'is_musician'], 'integer'],
         ];
     }
 
@@ -44,22 +45,8 @@ class Person extends \yii\db\ActiveRecord
             'id' => 'ID',
             'lastname' => 'Lastname',
             'firstname' => 'Firstname',
+            'is_author' => 'Is author?',
+            'is_musician' => 'Is musician?'
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAuthors()
-    {
-        return $this->hasMany(Author::className(), ['person_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMusicians()
-    {
-        return $this->hasMany(Musician::className(), ['person_id' => 'id']);
     }
 }

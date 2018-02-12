@@ -35,7 +35,7 @@ class m180204_132732_create_musician_record_table extends Migration
             'fk-musician_record-musician_id',
             'musician_record',
             'musician_id',
-            'musician',
+            'person',
             'id',
             'CASCADE'
         );

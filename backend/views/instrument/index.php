@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\InstrumentSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataProvider yii\elasticsearch\ActiveDataProvider */
 
 $this->title = 'Instruments';
 $this->params['breadcrumbs'][] = $this->title;

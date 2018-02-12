@@ -13,7 +13,7 @@ use Yii;
  *
  * @property Composition[] $compositions
  * @property File $contentFile
- * @property Author[] $authors
+ * @property Person[] $authors
  */
 class Text extends \yii\db\ActiveRecord
 {
@@ -71,6 +71,6 @@ class Text extends \yii\db\ActiveRecord
      */
     public function getAuthors()
     {
-        return $this->hasMany(Author::className(), ['id' => 'author_id'])->viaTable('text_author', ['text_id' => 'id']);
+        return $this->hasMany(Person::className(), ['id' => 'author_id'])->viaTable('text_author', ['text_id' => 'id']);
     }
 }

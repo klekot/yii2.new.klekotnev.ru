@@ -13,7 +13,7 @@ use Yii;
  *
  * @property Composition[] $compositions
  * @property File $notationFile
- * @property Author[] $authors
+ * @property Person[] $authors
  */
 class Music extends \yii\db\ActiveRecord
 {
@@ -71,6 +71,6 @@ class Music extends \yii\db\ActiveRecord
      */
     public function getAuthors()
     {
-        return $this->hasMany(Author::className(), ['id' => 'author_id'])->viaTable('music_author', ['music_id' => 'id']);
+        return $this->hasMany(Person::className(), ['id' => 'author_id'])->viaTable('music_author', ['music_id' => 'id']);
     }
 }

@@ -51,7 +51,7 @@ class m180204_131640_create_junction_table_for_music_and_author_tables extends M
             'fk-music_author-author_id',
             'music_author',
             'author_id',
-            'author',
+            'person',
             'id',
             'CASCADE'
         );

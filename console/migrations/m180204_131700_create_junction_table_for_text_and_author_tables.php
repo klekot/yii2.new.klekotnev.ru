@@ -51,7 +51,7 @@ class m180204_131700_create_junction_table_for_text_and_author_tables extends Mi
             'fk-text_author-author_id',
             'text_author',
             'author_id',
-            'author',
+            'person',
             'id',
             'CASCADE'
         );

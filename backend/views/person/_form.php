@@ -16,6 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'is_author')->checkbox() ?>
+
+    <?= $form->field($model, 'is_musician')->checkbox() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

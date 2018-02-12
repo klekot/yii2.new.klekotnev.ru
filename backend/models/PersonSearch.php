@@ -18,7 +18,7 @@ class PersonSearch extends Person
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'is_author', 'is_musician'], 'integer'],
             [['lastname', 'firstname'], 'safe'],
         ];
     }
@@ -60,6 +60,8 @@ class PersonSearch extends Person
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'is_author' => $this->is_author,
+            'is_musician' => $this->is_musician
         ]);
 
         $query->andFilterWhere(['like', 'lastname', $this->lastname])

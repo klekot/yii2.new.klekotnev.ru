@@ -13,7 +13,7 @@ use Yii;
  * @property int $instrument_id
  *
  * @property Instrument $instrument
- * @property Musician $musician
+ * @property Person $musician
  * @property Record $record
  */
 class MusicianRecord extends \yii\db\ActiveRecord
@@ -66,7 +66,7 @@ class MusicianRecord extends \yii\db\ActiveRecord
      */
     public function getMusician()
     {
-        return $this->hasOne(Musician::className(), ['id' => 'musician_id']);
+        return $this->hasOne(Person::className(), ['id' => 'musician_id']);
     }
 
     /**
