@@ -39,6 +39,8 @@ class File extends \yii\db\ActiveRecord
             [['file_type_id'], 'integer'],
             [['name', 'path'], 'string', 'max' => 255],
             [['file_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => FileType::className(), 'targetAttribute' => ['file_type_id' => 'id']],
+            [['name'], 'safe'],
+            [['name'], 'file', 'extensions'=>'jpg, gif, png'],
         ];
     }
 

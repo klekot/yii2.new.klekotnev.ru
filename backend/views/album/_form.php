@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\jui\DatePicker;
 use yii\helpers\ArrayHelper;
+use kartik\file\FileInput;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Album */
@@ -23,13 +25,12 @@ $dataCategory = ArrayHelper::map(\common\models\File::find()->asArray()->all(), 
         'dateFormat' => 'dd-MM-yyyy',
     ]) ?>
 
-    <?= $form->field($model, 'cover_file_id')->dropDownList(
-        $dataCategory,
-        [
-            'prompt'=>'-Choose a Category-',
-            'id' => 'name'
-        ]
-    ) ?>
+    <?= FileInput::widget([
+        'name' => 'input-ru[]',
+        'language' => 'ru',
+        'options' => ['multiple' => true],
+        'pluginOptions' => ['previewFileType' => 'any', 'uploadUrl' => Url::to(['/site/files-upload']),]
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

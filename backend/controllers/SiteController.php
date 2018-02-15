@@ -1,12 +1,14 @@
 <?php
 namespace backend\controllers;
 
+use common\models\File;
 use common\models\PageContent;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -27,12 +29,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'content-management'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['logout', 'index', 'save-content'],
+                        'actions' => ['logout', 'index', 'files-upload'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -100,5 +97,31 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionFilesUpload()
+    {
+        $model = new File();
+        $uploads = Yii::$app->basePath . '/uploads/';
+        Yii::$app->params['uploadPath'] = $uploads;
+        if ($model->load(Yii::$app->request->post())) {
+            $image = UploadedFile::getInstance($model, 'name');
+            $parts = (explode(".", $image->name));
+            $ext = end($parts);
+            $model->name = time().$model->id.".{$ext}";
+            $path = Yii::$app->params['uploadPath'] . $model->name;
+
+            if($model->save()){
+                $image->saveAs($path);
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        } else {
+
+            return $this->render('create', [
+                'model' => $model,
+
+            ]);
+        }
     }
 }
