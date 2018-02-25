@@ -11,10 +11,11 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use common\models\PageContent;
 use yii\helpers\Url;
+use backend\helpers\Utils;
 
 AppAsset::register($this);
 
-$models = \yii\helpers\Utils::commonModelsNames();
+$models = Utils::commonModelsNames();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

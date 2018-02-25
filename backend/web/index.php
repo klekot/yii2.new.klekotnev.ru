@@ -14,7 +14,4 @@ $config = yii\helpers\ArrayHelper::merge(
     require __DIR__ . '/../config/main-local.php'
 );
 
-// Plug custom helpers
-require(__DIR__ . '/../helpers/Utils.php');
-
 (new yii\web\Application($config))->run();

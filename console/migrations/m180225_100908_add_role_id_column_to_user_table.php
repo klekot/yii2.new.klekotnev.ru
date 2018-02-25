@@ -8,14 +8,14 @@ use yii\db\Migration;
  *
  * - `role`
  */
-class m180121_110305_add_role_id_column_to_user_table extends Migration
+class m180225_100908_add_role_id_column_to_user_table extends Migration
 {
     /**
      * @inheritdoc
      */
     public function up()
     {
-        $this->addColumn('user', 'role_id', $this->integer()->notNull());
+        $this->addColumn('user', 'role_id', $this->integer()->notNull()->defaultValue(1));
 
         // creates index for column `role_id`
         $this->createIndex(

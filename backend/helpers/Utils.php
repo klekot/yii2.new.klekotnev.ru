@@ -1,5 +1,5 @@
 <?php
-namespace yii\helpers;
+namespace backend\helpers;
 use Yii;
 class Utils
 {
